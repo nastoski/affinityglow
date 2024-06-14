@@ -1,0 +1,13 @@
+name: Hristijan
+super: true
+id: 14172ff3-05bf-4d8d-8482-f23bb80b4df0
+password_hash: $2y$10$Vndq5WWr6hccrnEOBc9cWecvFMraDwbh3vv7uwfWAYVkDi1qhTm5a
+preferences:
+  collections:
+    posts:
+      columns:
+        - title
+        - slug
+        - date
+        - status
+        - categories

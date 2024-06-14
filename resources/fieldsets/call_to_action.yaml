@@ -1,0 +1,37 @@
+title: 'Call to action'
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: hidden
+      display: Title
+      instructions: 'The title you want to display above the text.'
+      instructions_position: above
+      antlers: false
+  -
+    handle: text
+    field: common.text_plain
+    config:
+      instructions: 'The text you want to display above the buttons.'
+  -
+    import: buttons
+  -
+    handle: wrap_type
+    field:
+      options:
+        default: 'Default Wrap'
+        narrow: 'Narrow Wrap'
+      inline: false
+      cast_booleans: false
+      default: default
+      display: 'Wrap Type'
+      type: radio
+      icon: radio
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      localizable: true

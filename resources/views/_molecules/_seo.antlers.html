@@ -1,0 +1,72 @@
+<!-- HTML Meta Tags -->
+<meta name="description" content="{{seo_description or "Description"}}" />
+<meta name="keywords" content="{{ seo_title or title }}" />
+
+<meta name="application-name" content="{{ seo_title or title }}" />
+<meta name="apple-mobile-web-app-title" content="{{ seo_title or title }}" />
+
+<!-- Google / Search Engine Tags -->
+<meta itemProp="name" content="{{og_title or seo_title or title}}" />
+<meta itemProp="description" content="{{og_description or "Description"}}" />
+<meta itemProp="image" content="{{ og_image:url or seo:og_image }}" />
+
+<!-- Facebook Meta Tags -->
+<meta
+    property="og:url"
+    content="{{ url }}"
+/>
+<meta
+    property="og:title"
+    content="{{ og_title or seo_title or title }}"
+    key="title"
+/>
+<meta property="og:type" content="website" />
+<meta property="og:description" content="{{ og_description or "Description" }}" />
+<meta property="og:image" content="{{ og_image:url or seo:og_image }}" />
+<meta
+    property="og:site_name"
+    content="{{ og_title or seo_title or title }}"
+/>
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@affinityglow" />
+<meta
+    name="twitter:title"
+    content="{{ og_title or seo_title or title }}"
+/>
+<meta name="twitter:description" content="{{ og_description or "Description" }}" />
+<meta itemProp="twitter:image" content="{{ og_image:url or seo:og_image }}" />
+
+<!-- Canonical setup -->
+{{ if seo_canonical_type:value === "entry" }}
+    <link rel="canonical" href="{{ current_url }}" />
+{{ /if }}
+
+{{ if seo_canonical_type:value === "current" }}
+    <link rel="canonical" href="{{ seo_canonical_current:url }}" />
+{{ /if }}
+
+{{ if seo_canonical_type:value === "external" }}
+    <link rel="canonical" href="{{ seo_canonical_external }}" />
+{{ /if }}
+
+<!-- Robots setup -->
+<meta
+    name="robots"
+    content="{{ seo_noindex ? "noindex" : "index" }} {{seo_nofollow ? "nofollow" : "follow"}}"
+/>
+
+{{ if trackers:google_site_verification }}
+    <!-- Google Site Verification -->
+    <meta name="verify-v1" content="{{ trackers:google_site_verification }}" />
+{{ /if }}
+
+{{ if trackers:cloudflare_web_analytics }}
+<!-- Cloudflare Web Analytics -->
+<script
+    defer
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "{{ trackers:cloudflare_web_analytics }}"}'
+></script>
+{{ /if }}

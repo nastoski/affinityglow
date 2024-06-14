@@ -1,0 +1,111 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Title
+              instructions_position: above
+              listable: visible
+              visibility: visible
+              always_save: false
+              input_type: text
+              antlers: false
+              factory: text(20)
+          -
+            handle: category_color
+            field:
+              allow_any: true
+              type: color
+              display: 'Category Color'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              factory: hexcolor
+          -
+            handle: category_image
+            field:
+              use_breakpoints: false
+              allow_ratio: true
+              allow_fit: true
+              container: assets
+              restrict: false
+              allow_uploads: true
+              display: 'Category Image'
+              type: responsive
+              listable: hidden
+              instructions: '<p style="background: #f2f0a1; color: black; padding: 5px 10px; font-size: 15px; font-weight: bold;">  Use 1.6 ratio to get the best experience. If you change it, a frontend work may be needed. </p><p>Preferred image size is <span style="font-weight: bold;">580x350</span></p>'
+              instructions_position: above
+              visibility: visible
+              always_save: false
+              factory: "randomElement([['src' => ['assets::categories/stock_image_a.png'], 'ratio' => '1.6', 'glide:fit' => 'crop_focal'],['src' => ['assets::categories/stock_image_b.jpeg'], 'ratio' => '1.6', 'glide:fit' => 'crop_focal']])"
+              folder: categories
+              default:
+                ratio: '1.6'
+                'glide:fit': crop_focal
+              breakpoints:
+                - sm
+                - md
+                - lg
+                - xl
+                - 2xl
+          -
+            handle: category_detail_image
+            field:
+              use_breakpoints: true
+              allow_ratio: true
+              allow_fit: true
+              container: assets
+              restrict: false
+              allow_uploads: true
+              display: 'Category Detail Image'
+              type: responsive
+              listable: hidden
+              instructions: '<p style="background: #f2f0a1; color: black; padding: 5px 10px; font-size: 15px; font-weight: bold;">  Use 2 ratio for DEFAULT and 3.5 ratio for SM to get the best experience. If you change it, a frontend work may be needed. </p><p>Preferred image size is <span style="font-weight: bold;">1240x354</span> for SM and <span style="font-weight: bold;">607x303</span> for DEFAULT</p>'
+              instructions_position: above
+              visibility: visible
+              always_save: false
+              factory: "randomElement([['src' => ['assets::categories/stock_image_a.png'], 'ratio' => '2', 'glide:fit' => 'crop_focal', 'sm:src' => ['assets::categories/stock_image_a.png'], 'sm:ratio' => '3.5', 'sm:glide:fit' => 'crop_focal'],['src' => ['assets::categories/stock_image_b.jpeg'], 'ratio' => '2', 'glide:fit' => 'crop_focal', 'sm:src' => ['assets::categories/stock_image_b.jpeg'], 'sm:ratio' => '3.5', 'sm:glide:fit' => 'crop_focal']])"
+              folder: categories
+              default:
+                ratio: '2'
+                'glide:fit': crop_focal
+                'sm:ratio': '3.5'
+                'sm:glide:fit': crop_focal
+              breakpoints:
+                - sm
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: content
+            field:
+              type: markdown
+              listable: hidden
+              instructions_position: above
+              factory: realText(95)
+              visibility: visible
+              always_save: false
+              instructions: 'Used on the category info page.'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              required: true
+              validate:
+                - required
+                - 'max:200'
+title: Category

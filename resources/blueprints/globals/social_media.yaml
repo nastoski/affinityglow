@@ -1,0 +1,162 @@
+tabs:
+  social_media:
+    display: 'Social Media'
+    sections:
+      -
+        fields:
+          -
+            handle: section_social
+            field:
+              type: section
+              listable: hidden
+              display: 'Social media links'
+          -
+            handle: social_media
+            field:
+              sets:
+                main:
+                  display: Main
+                  instructions: null
+                  icon: null
+                  sets:
+                    facebook:
+                      display: Facebook
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: url
+                          field:
+                            input_type: text
+                            type: text
+                            localizable: true
+                            listable: hidden
+                            prepend: 'https://www.facebook.com/'
+                            display: URL
+                            validate: required
+                        -
+                          handle: prefix
+                          field:
+                            type: hidden
+                            default: 'https://www.facebook.com/'
+                    instagram:
+                      display: Instagram
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: url
+                          field:
+                            input_type: text
+                            type: text
+                            localizable: true
+                            listable: hidden
+                            prepend: 'https://www.instagram.com/'
+                            display: URL
+                            validate: required
+                        -
+                          handle: prefix
+                          field:
+                            type: hidden
+                            default: 'https://www.instagram.com/'
+                    tiktok:
+                      display: Tiktok
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: url
+                          field:
+                            input_type: text
+                            prepend: 'https://www.tiktok.com/'
+                            antlers: false
+                            type: text
+                            display: URL
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                            validate:
+                              - required
+                        -
+                          handle: prefix
+                          field:
+                            default: 'https://www.tiktok.com/'
+                            type: hidden
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                    twitter:
+                      display: Twitter
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: url
+                          field:
+                            input_type: text
+                            prepend: 'https://www.twitter.com/'
+                            antlers: false
+                            type: text
+                            display: URL
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                            validate:
+                              - required
+                        -
+                          handle: prefix
+                          field:
+                            default: 'https://www.twitter.com/'
+                            type: hidden
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                    pinterest:
+                      display: Pinterest
+                      instructions: null
+                      icon: null
+                      fields:
+                        -
+                          handle: url
+                          field:
+                            input_type: text
+                            antlers: false
+                            type: text
+                            display: URL
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+                            validate:
+                              - required
+                            prepend: 'https://www.pinterest.com/'
+                        -
+                          handle: prefix
+                          field:
+                            default: 'https://www.pinterest.com/'
+                            type: hidden
+                            listable: hidden
+                            instructions_position: above
+                            visibility: visible
+                            replicator_preview: true
+                            hide_display: false
+              type: replicator
+              listable: hidden
+              display: 'Social media'
+              localizable: true
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              collapse: false
+              previews: true
+              fullscreen: true
+              hide_display: false

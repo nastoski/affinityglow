@@ -1,0 +1,52 @@
+title: 'Page builder'
+fields:
+  -
+    handle: page_builder
+    field:
+      type: replicator
+      localizable: true
+      collapse: true
+      listable: false
+      display: 'Page builder'
+      instructions: 'Build your page by using various predefined content models.'
+      sets:
+        main:
+          display: Main
+          instructions: null
+          icon: null
+          sets:
+            widget_form:
+              display: 'Widget Form'
+              instructions: null
+              icon: form-text-field
+              fields:
+                -
+                  import: form
+            widget_slider_categories:
+              display: 'Widget Slider Categories'
+              instructions: null
+              icon: layout-carousel-horizontal
+              fields:
+                -
+                  import: widget_slider_categories
+            widget_ads:
+              display: 'Widget Ads'
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: widget_ads
+            widget_latest_news:
+              display: 'Widget Latest News'
+              instructions: null
+              icon: null
+              fields:
+                -
+                  import: widget_latest_news
+      instructions_position: above
+      visibility: visible
+      previews: true
+      always_save: false
+      fullscreen: true
+      hide_display: false
+      replicator_preview: true

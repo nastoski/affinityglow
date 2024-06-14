@@ -1,0 +1,124 @@
+<!-- footer -->
+<footer id="bottom" class="relative z-20 overflow-hidden">
+    <div class="pt-16 pb-11 lg:pb-8">
+        <div class="px-4 lg:px-8 mx-auto max-w-8xl">
+            <!-- primary segment -->
+            <div class="md:flex md:flex-wrap 2xl:flex-nowrap -mr-10 -mb-10">
+                <div class="md:basis-1/2 lg:basis-1/4 md:grow mb-10">
+                    <div class="mr-10">
+                        <div class="flex items-center mb-5 md:mb-7 last:mb-0">
+                            <p class="font-josefin text-secondary font-semibold text-2xl leading-tight">{{ footer_first_col_title || "About us" }}</p>
+                            <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                        </div>
+                        <a href="/"
+                            class="flex w-[260px] xxs:w-[290px] mb-5 last:mb-0">
+                            <img class="lazyload block w-full"
+                                data-src="/img/logo-footer.svg"
+                                alt="AffinityGlow" width="290" height="83">
+                        </a>
+                        {{ if configuration:footer_about_section_description }}
+                            <p class="font-josefin">
+                                {{ configuration:footer_about_section_description }}
+                            </p>
+                        {{ /if }}
+                    </div>
+                </div>
+
+                <div
+                    class="md:basis-1/2 lg:basis-1/4 md:grow mb-10">
+                    <div class="mr-10">
+                        <div class="flex items-center mb-5 md:mb-7 last:mb-0">
+                            <p class="font-josefin text-secondary font-semibold text-2xl leading-tight">{{ configuration:footer_second_col_title || "Latest Articles" }}</p>
+                            <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                        </div>
+
+                        {{ collection from="posts" limit="3" as="posts" sort="date:desc" }}
+                            <!-- grid -->
+                            <div class="sm:flex sm:flex-wrap -mb-5">
+                                {{ posts }}
+                                    <div class="recent-posts-item mb-5 sm:grow-0 sm:shrink basis-full">
+                                        <a href="{{ uri }}" class="flex group">
+                                            <div class="grow-0 shrink-0 basis-[100px] xxs:basis-[110px] mr-3 last:mr-0">
+                                                <div class="bg-secondary-light overflow-hidden bg-opacity-10 aspect-w-[1440] aspect-h-[900]">
+                                                    {{ responsive:post_image ratio="1.6" lazyload="true" }}
+                                                </div>
+                                            </div>
+
+                                            <div class="flex flex-col">
+                                                <h2 class="text-sm font-josefin leading-snug font-bold text-secondary group-hover:text-tertiary transition-colors duration-300 hidden lg:block">{{ title | truncate(45, '..') }}</h2>
+
+                                                <h2 class="text-sm font-josefin leading-snug font-bold text-secondary group-hover:text-tertiary transition-colors duration-300 block lg:hidden">{{ title }}</h2>
+
+                                                <time class="font-source text-secondary-light text-xs mt-auto" datetime="{{ date format="M d, Y" }}">{{ date format="M d, Y" }}</time>
+                                            </div>
+                                        </a>
+                                    </div>
+                                {{ /posts }}
+                            </div>
+                        {{ /collection }}
+
+                    </div>
+                </div>
+
+                <div
+                    class="md:basis-1/2 lg:basis-1/4 md:grow mb-10">
+                    <div class="mr-10">
+                        <div class="flex items-center mb-5 md:mb-7 last:mb-0">
+                            <p class="font-josefin text-secondary font-semibold text-2xl leading-tight">
+                                {{ configuration:footer_third_col_title || "Categories" }}
+                            </p>
+                            <span
+                                class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                        </div>
+
+                        <div class="flex flex-col items-start">
+                            {{ taxonomy:categories }}
+                                <a href="{{ uri }}" class="block bg-white px-3 py-1 shadow-alt mb-3 last:mb-0 font-josefin text-secondary text-sm hover:transition-transform hover:-translate-y-0.5 duration-300">
+                                    <span style="color: {{ category_color }}">#</span>
+                                    {{ title }}
+                                </a>
+                            {{ /taxonomy:categories }}
+                        </div>
+                    </div>
+                </div>
+
+                {{ if social_media:social_media | length > 0 }}
+                    <div class="md:basis-1/2 lg:basis-1/4 md:grow mb-10">
+                        <div class="mr-10">
+                            <div class="flex items-center mb-5 md:mb-7 last:mb-0">
+                                <p class="font-josefin text-secondary font-semibold text-2xl leading-tight">
+                                    {{ configuration:footer_fourth_col_title || "Follow us" }}
+                                </p>
+                                <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                            </div>
+                            {{ partial src="_atoms/social_follow/social_follow_sidebar" }}
+                        </div>
+                    </div>
+                {{ /if }}
+            </div>
+
+            <!-- secondary segment -->
+            <nav class="lg:flex lg:items-center text-base pt-10 lg:pt-20 first:pt-0">
+                <p
+                    class="font-josefin mb-5 last:mb-0 lg:mb-0 lg:mr-6 last:lg:mr-0"
+                    x-data="{ year: new Date().getFullYear() }"
+                    x-text="'&copy; ' + year + ' AffinityGlow'"></p>
+
+                {{ nav:footer_navigation as="items" }}
+                    {{ if items || items | length > 0 }}
+                        <ul class="lg:flex lg:items-center font-josefin mb-5 last:mb-0 lg:mb-0">
+                            {{ items }}
+                                <li class="mb-4 last:mb-0 lg:mb-0 lg:mr-6 last:lg:mr-0">
+                                    <a href="{{ url }}" title="{{ title }}"
+                                        target="{{ target_blank ? '_blank' : '_self' }}"
+                                        class="hover:underline">{{ title }}</a>
+                                </li>
+                            {{ /items }}
+                        </ul>
+                    {{ /if }}
+                {{ /nav:footer_navigation }}
+            </nav>
+        </div>
+    </div>
+</footer>
+<!-- /footer -->

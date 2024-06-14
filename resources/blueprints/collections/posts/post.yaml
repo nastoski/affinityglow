@@ -1,0 +1,155 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              input_type: text
+              antlers: false
+              display: Name
+              type: text
+              instructions: 'Descriptive unique name'
+              listable: hidden
+              instructions_position: above
+              factory: text(40)
+              validate:
+                - required
+                - 'unique_entry_value:{collection},{id},{site}'
+              visibility: visible
+              always_save: false
+              character_limit: 100
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+              display: Title
+              instructions_position: above
+              listable: visible
+              visibility: visible
+              always_save: false
+              input_type: text
+              antlers: false
+              factory: text(40)
+          -
+            handle: excerpt
+            field:
+              antlers: false
+              display: Excerpt
+              type: textarea
+              listable: hidden
+              instructions_position: above
+              factory: realText(95)
+              visibility: visible
+              always_save: false
+              instructions: 'Used on the overview page cards.'
+          -
+            handle: reading_time
+            field:
+              antlers: false
+              display: 'Reading Time'
+              type: text
+              listable: hidden
+              instructions_position: above
+              factory: "randomElement(['2 min', '3 min', '4 min'])"
+              visibility: visible
+              always_save: false
+          -
+            handle: page_content
+            field: page_content.page_content
+  media:
+    display: Media
+    sections:
+      -
+        display: Media
+        fields:
+          -
+            handle: post_image
+            field:
+              use_breakpoints: false
+              allow_ratio: true
+              allow_fit: true
+              container: assets
+              restrict: false
+              allow_uploads: true
+              display: 'Post Image'
+              type: responsive
+              listable: hidden
+              instructions: '<p style="background: #f2f0a1; color: black; padding: 5px 10px; font-size: 15px; font-weight: bold;">  Use 1.6 ratio to get the best experience. If you change it, a frontend work may be needed. </p><p>Preferred image size is <span style="font-weight: bold;">853x533</span></p>'
+              instructions_position: above
+              visibility: visible
+              always_save: false
+              factory: "randomElement([['src' => ['assets::posts/stock_image_a.png'], 'ratio' => '1.6', 'glide:fit' => 'crop_focal'],['src' => ['assets::posts/stock_image_b.jpeg'], 'ratio' => '1.6', 'glide:fit' => 'crop_focal']])"
+              folder: posts
+              default:
+                ratio: '1.6'
+                'glide:fit': crop_focal
+              breakpoints:
+                - sm
+                - md
+                - lg
+                - xl
+                - 2xl
+  seo:
+    display: SEO
+    sections:
+      -
+        display: SEO
+        fields:
+          -
+            import: seo
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required
+          -
+            handle: categories
+            field:
+              type: terms
+              taxonomies:
+                - categories
+              display: Categories
+              mode: select
+              instructions_position: above
+              listable: hidden
+              visibility: visible
+              replicator_preview: true
+              create: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: author
+            field:
+              max_items: 1
+              mode: select
+              type: users
+              display: Author
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+title: Post

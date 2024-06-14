@@ -1,0 +1,185 @@
+tabs:
+  page_titles:
+    display: 'Page titles'
+    sections:
+      -
+        fields:
+          -
+            handle: section_title
+            field:
+              type: section
+              instructions: 'The website title'
+              display: Title
+              localizable: false
+          -
+            handle: title_separator
+            field:
+              options:
+                ' | ': '|'
+                ' - ': '-'
+                ' / ': /
+                ' :: ': '::'
+                ' > ': '>'
+              clearable: false
+              multiple: false
+              searchable: true
+              taggable: false
+              push_tags: false
+              cast_booleans: false
+              type: select
+              instructions: 'Select the character to separate the page title and site title.'
+              width: 33
+              listable: hidden
+              display: Separator
+              localizable: false
+          -
+            handle: site_name
+            field:
+              input_type: text
+              type: text
+              localizable: true
+              listable: hidden
+              display: 'Website title'
+              instructions: "The title for the website. <br>Defaults to Laravel's App Name."
+              width: 66
+  json-ld:
+    display: JSON-ld
+    sections:
+      -
+        fields:
+          -
+            handle: section_schema
+            field:
+              type: section
+              instructions: 'JSON-LD Schema'
+              display: 'Knowledge graph data'
+              localizable: false
+          -
+            handle: json_ld_type
+            field:
+              options:
+                none: None
+                organization: Organization
+                custom: Custom
+              default: none
+              type: button_group
+              instructions: 'The type of data to be added on each page.'
+              listable: false
+              display: Type
+              localizable: true
+          -
+            handle: organization_name
+            field:
+              input_type: text
+              type: text
+              localizable: true
+              listable: hidden
+              display: 'Organization name'
+              width: 66
+              if:
+                json_ld_type: 'equals organization'
+              validate:
+                - 'required_if:json_ld_type,organization'
+          -
+            handle: organization_logo
+            field: common.image
+            config:
+              listable: hidden
+              display: 'Organization logo'
+              instructions: 'Minimum 112px x 112px, will be focal cropped to a square.'
+              width: 33
+              if:
+                json_ld_type: 'equals organization'
+          -
+            handle: json_ld
+            field:
+              type: textarea
+              instructions: 'Add custom JSON-LD to be included on each page. This can include stuff like business hours and contact data.'
+              localizable: true
+              listable: false
+              display: JSON-LD
+              if:
+                json_ld_type: 'equals custom'
+              validate:
+                - 'required_if:json_ld_type,custom'
+  social:
+    display: Social
+    sections:
+      -
+        fields:
+          -
+            handle: section_og
+            field:
+              type: section
+              instructions: 'Open Graph meta tags'
+              display: Social
+              localizable: false
+          -
+            handle: og_image
+            field: common.image
+            config:
+              listable: hidden
+              display: 'Social image'
+              instructions: 'The default OG image. Can be overridden per entry. The recommended size is 1200px x 630px'
+              width: 50
+  sitemap:
+    display: Sitemap
+    sections:
+      -
+        fields:
+          -
+            handle: section_sitemap
+            field:
+              type: section
+              instructions: 'Configure the sitemap.xml'
+              display: Sitemap
+              localizable: false
+          -
+            handle: sitemap_collections
+            field:
+              mode: select
+              type: collections
+              instructions: 'Select which collections to include in the sitemap.xml.'
+              listable: hidden
+              default: pages
+              display: Collections
+              localizable: true
+  robots:
+    display: Robots
+    fields:
+      -
+        handle: section_robots
+        field:
+          type: section
+          instructions: 'Configure robots settings.'
+          display: 'Robots settings'
+          instructions_position: above
+          listable: hidden
+          visibility: visible
+          hide_display: false
+      -
+        handle: seo_noindex
+        field:
+          default: false
+          type: toggle
+          display: No-index
+          icon: toggle
+          width: 50
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          hide_display: false
+          instructions: 'Instruct crawlers not to index the website.'
+      -
+        handle: seo_nofollow
+        field:
+          default: false
+          type: toggle
+          display: No-follow
+          icon: toggle
+          width: 50
+          listable: hidden
+          instructions_position: above
+          visibility: visible
+          hide_display: false
+          instructions: 'Instruct crawlers not to follow the website.'

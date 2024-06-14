@@ -1,0 +1,175 @@
+<div
+  class="flex-vid-advanced relative overflow-hidden after:block after:pt-[calc(720/1280*100%)] after:w-full mb-5 lg:mb-10 last:mb-0"
+  x-data="flexVid"
+  :class="{'state-playing' : isPlaying, 'state-muted': isMuted}"
+>
+  <style>
+    .flex-vid-advanced iframe,.flex-vid-advanced picture{position:absolute;left:0;top:0;right:0;bottom:0;height:100%;width:100%}.flex-vid-advanced img,.flex-vid-advanced picture{display:block;width:100%;height:100%;object-fit:cover}.flex-vid-advanced.state-muted iframe{z-index:-10;transform:scale(3);transition:transform .3s ease-out}@media (min-width:1024px){.flex-vid-advanced.state-muted iframe{transform:scale(1.3)}}
+  </style>
+  {{# player-target #}}
+  <div
+    id="player-{{youtube_video_id}}"
+    class="player-target"
+    data-video-id="{{youtube_video_id}}"
+  ></div>
+
+  {{# player placeholder #}}
+  <div
+    class="absolute top-0 left-0 z-10 w-full h-full cursor-pointer group rounded-b-5xl overflow-hidden"
+    {{ if is_autoplay }}data-autoplay="true"{{/if}}
+    :class="{'hidden': isPlaying}"
+    @click="isPlaying= true; loadVideo($el.parentElement, `{{youtube_video_id}}`);"
+    x-init="$nextTick(() => {
+      video_id= `{{youtube_video_id}}`;
+      let autoplay = false;
+
+      {{ if is_autoplay }}
+        autoplay= true;
+      {{/if}}
+
+      if (autoplay) {
+        function autoplayStart() {
+          isPlaying= true;
+          isAutoplay= true;
+          isMuted= true;
+          isStale = false;
+          loadVideo($el.parentElement, `{{youtube_video_id}}`);
+        }
+        window.addEventListener('mouseover', autoplayStart, { once: true });
+
+        // touch-events
+        if (('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)) {
+          window.addEventListener('touchstart', autoplayStart, { once: true });
+        }
+        setTimeout(() => autoplayStart(), 6000); // fallback to start after 3s if there's no user action
+      }
+    })"
+  >
+    <button
+      class="trigger-play-video absolute z-20 left-1/2 -translate-x-1/2 bottom-1/4 bg-secondary rounded-full text-white transition-colors w-[70px] h-[70px] flex items-center justify-center hover:bg-opacity-80"
+      type="button"
+      aria-label="Play Video"
+    >
+      <span class="icon-Play text-3xl ml-2"></span>
+    </button>
+
+    {{ if video_placeholder:url }}
+      {{ responsive:video_placeholder glide:width="1440" }}
+    {{ /if }}
+  </div>
+  {{# player placeholder #}}
+
+
+  {{ if is_autoplay }}
+    <button
+      class="trigger-play-video absolute z-20 left-1/2 -translate-x-1/2 bottom-1/4 bg-secondary rounded-full text-white transition-colors w-[70px] h-[70px] flex items-center justify-center hover:bg-opacity-80"
+      type="button"
+      @click="isMuted ? unMutePlayer(`{{youtube_video_id}}`) : mutePlayer(`{{youtube_video_id}}`);"
+      :class="{'!left-auto !translate-x-0 right-8 !bottom-16 lg:!bottom-24': !isMuted, 'hidden': isStale}"
+      aria-label="Play Video"
+    >
+      <span
+        class="text-3xl"
+        :class="{'icon-Play ml-2': isMuted, 'icon-mute-1': !isMuted}"
+      ></span>
+    </button>
+  {{ /if }}
+</div>
+<script>
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("flexVid", () => ({
+      isStale: true,
+      isPlaying: false,
+      isMuted: false,
+      isAutoplay: false,
+      video_id: "",
+
+      onPlayerReady(event) {
+        event.target.playVideo();
+        this.isPlaying = true;
+        this.isStale = false;
+      },
+
+      onPlayerStateChange(event) {
+        if (event.data === window.YT.PlayerState.ENDED) {
+          if (this.isAutoplay) {
+            this.playPlayer(this.video_id);
+          } else {
+            this.isPlaying = false;
+          }
+        }
+      },
+
+      playPlayer(playerId) {
+        const player = window.YT.get(`player-${playerId}`);
+
+        player.playVideo();
+        this.isPlaying = true;
+        this.isStale = false;
+      },
+
+      mutePlayer(playerId) {
+        const player = window.YT.get(`player-${playerId}`);
+
+        player.mute();
+        this.isMuted = true;
+      },
+
+      unMutePlayer(playerId) {
+        const player = window.YT.get(`player-${playerId}`);
+
+        player.unMute();
+        // player.seekTo(0);
+        this.isMuted = false;
+        this.isStale = false;
+      },
+
+      setUpPlayer(playerId) {
+        const onPlayerReady = this.onPlayerReady.bind(this);
+        const onPlayerStateChange = this.onPlayerStateChange.bind(this);
+        const isAutoplay = this.isAutoplay;
+
+        // the Player object is created uniquely based on the id in props
+        window[`player-${playerId}`] = new window.YT.Player(`player-${playerId}`, {
+          width: "1280",
+          height: "720",
+          videoId: playerId,
+          playerVars: {
+            autoplay: isAutoplay ? 1 : 0,
+            mute: isAutoplay ? 1 : 0,
+            controls: isAutoplay ? 0 : 1,
+            showinfo: 0,
+            rel: 0,
+            modestbranding: isAutoplay ? 0 : 1,
+            loop: isAutoplay ? 1 : 0,
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange,
+          },
+        });
+      },
+
+      loadVideo(el, playerId) {
+        if (!window.YT) {
+          // If not, load the script asynchronously
+          const tag = document.createElement("script");
+          tag.src = "https://www.youtube.com/iframe_api";
+
+          const firstScriptTag = document.getElementsByTagName("script")[0];
+          firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+
+          // onYouTubeIframeAPIReady will load the video after the script is loaded
+          window.onYouTubeIframeAPIReady = () => this.setUpPlayer(playerId);
+        } else if (!el.querySelector("iframe")) {
+          // when there are multiple videos & the youtube-iframe-api is already loaded
+          // if the video doesn't exist, load the new video
+          this.setUpPlayer(playerId);
+        } else {
+          // when the video is finished playing & you attempt to play again
+          this.playPlayer(playerId);
+        }
+      },
+    }));
+  });
+</script>

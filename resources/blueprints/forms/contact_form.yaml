@@ -1,0 +1,143 @@
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: naam
+            field:
+              placeholder: Naam
+              input_type: text
+              antlers: false
+              display: Naam
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+              width: 50
+          -
+            handle: email
+            field:
+              placeholder: Email
+              input_type: email
+              antlers: false
+              display: Email
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+              width: 50
+          -
+            handle: telefoonnummer
+            field:
+              placeholder: Telefoonnummer
+              input_type: tel
+              antlers: false
+              display: Telefoonnummer
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: location
+            field:
+              placeholder: 'Kies vestiging'
+              options:
+                'Option 1': 'Option 1'
+                'Option 2': 'Option 2'
+              multiple: false
+              clearable: false
+              searchable: false
+              taggable: false
+              push_tags: false
+              cast_booleans: false
+              display: Location
+              type: select
+              icon: select
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: bericht
+            field:
+              placeholder: Bericht
+              antlers: false
+              display: Bericht
+              type: textarea
+              icon: textarea
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: test_checkboxes
+            field:
+              inline: false
+              options:
+                'option 1': 'option 1'
+                'option 2': 'option 2'
+              display: 'Test checkboxes'
+              type: checkboxes
+              icon: checkboxes
+              listable: hidden
+              instructions_position: above
+          -
+            handle: test_radios
+            field:
+              options:
+                'option 1': 'option 1'
+                'option 2': 'option 2'
+              inline: false
+              cast_booleans: false
+              display: 'Test radios'
+              type: radio
+              icon: radio
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: test_upload_field
+            field:
+              mode: list
+              container: assets
+              folder: files
+              restrict: false
+              allow_uploads: true
+              show_filename: true
+              max_files: 1
+              display: 'Test upload field'
+              type: assets
+              icon: assets
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: referer
+            field:
+              input_type: text
+              antlers: false
+              display: Referer
+              type: text
+              icon: text
+              listable: hidden
+              instructions_position: above
+          -
+            handle: submit_button
+            field:
+              type: submit_button
+              display: 'Submit Button'
+              icon: '<svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(4 4)"><path d="m12.5 10.5v-8c0-1.1045695-.8954305-2-2-2h-8c-1.1045695 0-2 .8954305-2 2v8c0 1.1045695.8954305 2 2 2h8c1.1045695 0 2-.8954305 2-2z"/><path d="m6.5 3.5v6" transform="matrix(0 1 -1 0 13 0)"/></g></svg>'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false

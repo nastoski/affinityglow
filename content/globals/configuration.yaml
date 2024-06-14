@@ -1,0 +1,21 @@
+title: Configuration
+data:
+  error_page_title: 'Not Found'
+  sidebar_recent_posts_title: 'Recent posts'
+  sidebar_categories_title: Categories
+  sidebar_social_links_title: Social
+  sidebar_advertising_title: Advertising
+  advertising_image:
+    src: stock_image_a.png
+    ratio: '1.6'
+    'glide:fit': crop_focal
+  advertising_link: 'https://google.com'
+  footer_first_col_title: 'About us'
+  footer_second_col_title: 'Latest Articles'
+  footer_third_col_title: Categories
+  footer_fourth_col_title: 'Follow us'
+  footer_about_section_description: "We're all about affiliate marketing insights. Explore with us as we connect audiences with inspiring products and services through strategic partnerships and curated content. Experience authenticity, integrity, and innovation on our journey together."
+  search_page_popular_categories:
+    - est-suscipit
+    - eum-neque-nihil-sed
+    - minima-saepe-qui-et

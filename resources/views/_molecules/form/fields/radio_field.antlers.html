@@ -1,0 +1,35 @@
+<fieldset id="{{ form:handle }}_{{ handle }}"
+    class="form-group flex flex-col items-start w-full mb-5 last:mb-0 {{ inline ? 'sm:flex-wrap sm:flex-row' : ''}}">
+    {{# label #}}
+    <legend
+        class="block self-start relative cursor-pointer text-tertiary-dark font-josefin font-extralight uppercase text-lg lg:text-xl peer-disabled:cursor-not-allowed peer-disabled:opacity-25 mb-2.5">
+        {{ display }}
+
+        {{# adding asterisk for required fields #}}
+        {{ if (validate | in_array:required) }}
+        *
+        {{ /if }}
+    </legend>
+
+    {{# instructions above #}}
+    {{ if instructions && instructions_position === "above" }}
+    <span
+        class="block w-full mb-1 text-sm font-josefin font-extralight last:mb-0">{{
+        instructions }}</span>
+    {{ /if }}
+
+    {{ foreach:options }}
+    {{ partial src="_molecules/form/fields/option_field" type="radio"
+    name="{{ handle }}" error="{{ error }}" }}
+    {{ /foreach:options }}
+
+    {{# instructions below #}}
+    {{ if instructions && instructions_position === "below" }}
+    <span class="block w-full text-sm font-josefin font-extralight">{{
+        instructions }}</span>
+    {{ /if }}
+
+    {{# error message #}}
+    <p
+        class="error-feedback mt-1 text-xs text-error font-bold animate-fadeIn w-full empty:hidden"></p>
+</fieldset>

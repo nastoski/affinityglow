@@ -1,0 +1,16 @@
+<a
+    {{ if link_type === "url" }} href="{{ url }}" {{ /if }}
+    {{ if link_type === "email" }} href="mailto:{{ email }}"  {{ /if }}
+    {{ if link_type === "tel" }} href="tel:{{ tel }}"  {{ /if }}
+    {{ if link_type === "entry" }} href="{{ entry:url }}"  {{ /if }}
+    {{ if link_type === "asset" }} href="{{ asset:url }}" download  {{ /if }}
+
+    {{ if target_blank }} target="_blank" {{ /if }}
+
+    {{ if attr_title }} title="{{ attr_title }}" {{ /if }}
+    {{ if attr_aria }} aria-label="{{ attr_aria }}" {{ /if }}
+
+    class="btn {{ link_style === "state-primary" ?= "state-primary"}} {{ customClass }}"
+>
+    {{ label }}
+</a>

@@ -1,0 +1,65 @@
+<fieldset id="{{ form:handle }}_{{ handle }}"
+    class="form-group flex flex-col w-full mb-5 last:mb-0">
+    {{# label #}}
+    <label
+        class="block self-start relative cursor-pointer text-tertiary-dark font-josefin font-extralight uppercase text-lg lg:text-xl peer-disabled:cursor-not-allowed peer-disabled:opacity-25 order-first mb-2.5"
+        for="{{ handle }}">
+        {{ display }}
+
+        {{# adding asterisk for required fields #}}
+        {{ if (validate | in_array:required) }}
+        *
+        {{ /if }}
+    </label>
+
+    {{# prepend text #}}
+    {{ if prepend }}
+    <span
+        class="block w-full mb-1 text-sm font-josefin font-extralight last:mb-0">{{
+        prepend }}</span>
+    {{ /if }}
+
+    {{# instructions above #}}
+    {{ if instructions && instructions_position === "above" }}
+    <span
+        class="block w-full mb-1 text-sm font-josefin font-extralight last:mb-0">{{
+        instructions }}</span>
+    {{ /if }}
+
+    {{# actual field #}}
+    <div class="relative bg-white peer">
+        <select
+            name="{{ handle }}"
+            id="{{ handle }}"
+            value="{{ default }}"
+            class="cursor-pointer block pl-5 pr-10 py-3.5 w-full appearance-none text-tertiary-dark border border-tertiary-light rounded-md focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-tertiary-light transition-all text-lg lg:text-xl disabled:opacity-25 focus:outline-none disabled:cursor-not-allowed placeholder:opacity-50 bg-transparent font-josefin font-extralight relative z-20 peer">
+            <option value disabled selected>{{ placeholder }}</option>
+
+            {{ foreach:options }}
+            <option value="{{ key }}">
+                {{ value }}
+            </option>
+            {{ /foreach:options }}
+        </select>
+
+        {{# icon #}}
+        <span
+            class="icon-down-arrow-3 absolute top-1/2 -translate-y-1/2 right-5 text-lg z-10 peer-disabled:opacity-25 text-tertiary-dark"></span>
+    </div>
+
+    {{# append text #}}
+    {{ if append }}
+    <span class="block w-full mt-1 text-sm font-josefin font-extralight">{{
+        append }}</span>
+    {{ /if }}
+
+    {{# instructions below #}}
+    {{ if instructions && instructions_position === "below" }}
+    <span class="block w-full mt-1 text-sm font-josefin font-extralight">{{
+        instructions }}</span>
+    {{ /if }}
+
+    {{# error message #}}
+    <p
+        class="error-feedback mt-1 text-xs text-error font-bold animate-fadeIn w-full empty:hidden"></p>
+</fieldset>

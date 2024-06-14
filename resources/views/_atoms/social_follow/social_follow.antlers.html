@@ -1,0 +1,17 @@
+<div class="flex items-center text-2xl lg:text-2.5xl {{ customClass }}">
+    {{ social_media:social_media }}
+        <a href="{{ prefix }}{{ url }}" class="{{ if type === 'facebook' }}text-[#175beb]{{ elseif type === 'instagram' }}text-[#EF00A2]{{ elseif type === 'twitter' }}text-[#14171A]{{ elseif type === 'tiktok' }}text-[#69c9d0]{{ elseif type === 'pinterest' }}text-[#E60023]{{ /if }} relative hover:transition-transform hover:-translate-y-0.5 duration-300 block mr-5 last:mr-0" rel="noopener noreferer" target="_blank" title="{{ type }}" aria-label="{{ type }}">
+            {{ if type === 'facebook' }}
+                <span class="block icon-facebook"></span>
+            {{ elseif type === 'instagram' }}
+                <span class="icon-instagram"></span>
+            {{ elseif type === 'twitter' }}
+                <span class="icon-x"></span>
+            {{ elseif type === 'tiktok' }}
+                <span class="icon-tiktok"></span>
+            {{ elseif type === 'pinterest' }}
+                <span class="icon-pinterest"></span>
+            {{ /if }}
+        </a>
+    {{ /social_media:social_media }}
+</div>

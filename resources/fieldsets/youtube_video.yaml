@@ -1,0 +1,31 @@
+title: 'Youtube Video'
+fields:
+  -
+    handle: youtube_video_id
+    field:
+      input_type: text
+      antlers: false
+      display: 'Youtube Video ID'
+      type: text
+      icon: text
+      instructions: 'Enter youtube video id.'
+      listable: hidden
+      instructions_position: above
+      localizable: true
+  -
+    handle: video_placeholder
+    field:
+      mode: list
+      container: assets
+      folder: widgets
+      restrict: false
+      allow_uploads: true
+      show_filename: true
+      max_files: 1
+      display: 'Video Placeholder'
+      type: assets
+      icon: assets
+      instructions: 'Enter placeholder image that shows at start.'
+      listable: hidden
+      instructions_position: above
+      localizable: true

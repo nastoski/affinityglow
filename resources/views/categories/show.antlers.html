@@ -1,0 +1,94 @@
+{{ if entries && entries | length > 0 }}
+        <div class="category-detail px-4 lg:px-8 mx-auto max-w-8xl pb-10 lg:pb-20 xl:pb-24">
+            <div class="category-detail-image bg-secondary-light overflow-hidden relative bg-opacity-10 aspect-w-[1440] aspect-h-[720] sm:aspect-h-[411] after:absolute after:content-[''] after:border-white after:border-[2px] after:inset-1 after:bg-black after:bg-opacity-40 z-20 mb-7 sm:mb-0">
+                {{ if category_detail_image:src }}
+                    {{ responsive:category_detail_image ratio="2" glide:width="1280" sm:ratio="3.5" lazyload="true" }}
+                {{ /if }}
+
+                <div class="absolute z-30 flex flex-col justify-center items-center px-6">
+                    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-josefin font-bold text-white relative z-10 mb-2.5 lg:mb-5"><span style="color: {{ category_color }}">#</span>{{ title }}</p>
+    
+                    <div class="font-source text-white flex items-center justify-center">
+                        <span class="mr-1.5 sm:mr-3 text-sm sm:text-lg">{{ entries | length }}</span>
+                        <span class="whitespace-nowrap inline-block before:content-[''] before:inline-block before:w-[8px] before:sm:w-[15px] before:h-[1px] before:sm:h-[2px] before:bg-primary before:align-middle before:mr-1 before:sm:mr-3">
+                            <span class="text-sm sm:text-lg">Articles</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- category description -->
+            <div class="prose lg:prose-lg mb-10 sm:mb-0 mt-5 lg:mt-10">
+                {{ content }}
+            </div>
+
+            <!-- grid -->
+            {{ entries as="posts" limit="6" paginate="true" sort="date:desc" }}
+                <div class="sm:flex sm:flex-wrap -mb-5 sm:-mr-4 lg:-mr-5">
+                    {{ posts }}
+                        <div class="news-item mb-6 last:mb-0 sm:mb-0 sm:mt-8 lg:mt-9 sm:grow-0 sm:shrink sm:basis-1/2 lg:basis-1/3">
+                            <a href="{{ uri }}" class="flex flex-col h-full sm:mr-4 lg:mr-5 group shadow-odd">
+
+                                <div class="bg-secondary-light overflow-hidden relative bg-opacity-10 aspect-w-[1440] aspect-h-[900]">
+                                    {{ responsive:post_image ratio="1.6" glide:width="575" lazyload="true" }}
+                                </div>
+
+                                <div class="bg-white px-5 py-5 grow flex flex-col">
+                                    <!-- title -->
+                                    {{ if title }}
+                                        <h2 class="text-xl lg:text-2xl font-josefin font-semibold text-secondary mb-3 last:mb-0 group-hover:text-tertiary transition-colors duration-300">
+                                            {{ title }}
+                                        </h2>
+                                    {{ /if }}
+
+                                    {{ if excerpt }}
+                                        <!-- excerpt -->
+                                        <p class="font-source mb-3 text-secondary-light">{{ excerpt }}</p>
+                                    {{ /if }}
+
+                                    <div class="font-source text-secondary-light mt-auto">
+                                        <time class="mr-3" datetime="{{ date format="M d, Y" }}">{{ date format="M d, Y" }}</time>
+                                        {{ if reading_time }}
+                                            <div class="whitespace-nowrap inline-block lowercase before:content-[''] before:inline-block before:w-[15px] before:h-[2px] before:bg-primary before:align-middle before:mr-3">
+                                                <span class="">{{ reading_time }}</span>
+                                            </div>
+                                        {{ /if }}
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    {{ /posts }}
+                </div>
+
+
+                {{ paginate }}
+                    {{ if prev_page or next_page }}
+                        <!-- pagination -->
+                        {{ partial src="_molecules/pagination/pagination" customClass="pt-10 sm:pt-14 lg:pt-20" }}
+                    {{ /if }}
+                {{ /paginate }}
+            {{ /entries }}
+        </div>
+{{ else }}
+    <div class="category-detail px-4 lg:px-8 mx-auto max-w-8xl pb-10 lg:pb-20 xl:pb-24">
+        
+            <div class="category-detail-image bg-secondary-light overflow-hidden relative bg-opacity-10 aspect-w-[1440] aspect-h-[720] sm:aspect-h-[411] after:absolute after:content-[''] after:border-white after:border-[2px] after:inset-1 after:bg-black after:bg-opacity-40 z-20">
+                {{ if category_detail_image:src }}
+                    {{ responsive:category_detail_image ratio="2" glide:width="1280" sm:ratio="3.5" lazyload="true" }}
+                {{ /if }}
+
+                <div class="absolute z-30 flex flex-col justify-center items-center px-6">
+                    <p class="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl font-josefin font-bold text-white relative z-10 mb-2.5 lg:mb-5"><span style="color: {{ category_color }}">#</span>{{ title }}</p>
+    
+                    <div class="font-source text-white flex items-center justify-center">
+                        <span class="mr-1.5 sm:mr-3 text-sm sm:text-lg">{{ entries | length }}</span>
+                        <span class="whitespace-nowrap inline-block before:content-[''] before:inline-block before:w-[8px] before:sm:w-[15px] before:h-[1px] before:sm:h-[2px] before:bg-primary before:align-middle before:mr-1 before:sm:mr-3">
+                            <span class="text-sm sm:text-lg">Articles</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        
+        <h2 class="text-2xl lg:text-2.5xl font-josefin font-semibold text-secondary text-center mt-10 lg:mt-20 xl:mt-24">There are no posts yet for this category!</h2>
+    </div>
+{{ /if }}

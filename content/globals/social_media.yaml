@@ -1,0 +1,33 @@
+title: 'Social media'
+data:
+  social_media:
+    -
+      id: lsao6p1k
+      url: hristijan.nastoski.12
+      prefix: 'https://www.facebook.com/'
+      type: facebook
+      enabled: true
+    -
+      id: lsao73yn
+      url: kiko2209
+      prefix: 'https://www.instagram.com/'
+      type: instagram
+      enabled: true
+    -
+      id: lsao7pun
+      url: '@affinityglow'
+      prefix: 'https://www.tiktok.com/'
+      type: tiktok
+      enabled: false
+    -
+      id: lsao7wpb
+      url: nastoskih
+      prefix: 'https://www.twitter.com/'
+      type: twitter
+      enabled: true
+    -
+      id: lthvkqhx
+      url: affinityglow
+      prefix: 'https://www.pinterest.com/'
+      type: pinterest
+      enabled: true

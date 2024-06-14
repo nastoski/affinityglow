@@ -1,0 +1,65 @@
+title: 'Page content'
+fields:
+  -
+    handle: page_content
+    field:
+      always_show_set_button: false
+      sets:
+        main:
+          display: Main
+          instructions: null
+          icon: null
+          sets:
+            widgets:
+              display: 'Widgets Set'
+              instructions: null
+              icon: null
+              fields:
+                -
+                  handle: page_builder
+                  field: page_builder.page_builder
+                  config:
+                    display: 'Page Builder'
+      buttons:
+        - h1
+        - h2
+        - h3
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - removeformat
+        - quote
+        - anchor
+        - image
+        - table
+      container: assets
+      save_html: false
+      toolbar_mode: fixed
+      link_noopener: false
+      link_noreferrer: false
+      target_blank: false
+      link_collections:
+        - pages
+      reading_time: false
+      fullscreen: true
+      allow_source: true
+      enable_input_rules: true
+      enable_paste_rules: true
+      antlers: false
+      display: 'Page Content'
+      type: bard
+      instructions: 'Build your page with content & widgets in between.'
+      listable: hidden
+      instructions_position: above
+      localizable: true
+      visibility: visible
+      always_save: false
+      collapse: false
+      previews: true
+      remove_empty_nodes: trim
+      replicator_preview: true
+      smart_typography: false
+      inline: false
+      word_count: false
+      hide_display: false

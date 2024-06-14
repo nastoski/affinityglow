@@ -1,0 +1,73 @@
+<div
+    class="widget-slider-categories px-4 lg:px-8 mx-auto max-w-8xl py-10 lg:py-20 xl:py-24 overflow-hidden">
+    <style>
+        .widget-slider-categories img,
+        .widget-slider-categories picture {
+            width: 100%;
+            display: block;
+        }
+        .widget-slider-categories img {
+            height: 100%;
+            object-fit: cover;
+        }
+        .tns-visually-hidden {
+            position: absolute;
+            left: -10000em;
+        }
+        .widget-slider-categories .tns-outer {
+            overflow: hidden;
+        }
+        .widget-slider-categories .slide:not(:first-child) {
+            display: none;
+        }
+        .widget-slider-categories .slide.tns-item:not(:first-child) {
+            display: block;
+        }
+        .widget-slider-categories .tns-outer + .slider-navigation {
+            display: flex;
+        }
+    </style>
+
+    {{ if title }}
+        <h2 class="text-2xl lg:text-2.5xl font-josefin font-semibold text-secondary mb-5">{{ title }}</h2>
+    {{ /if }}
+
+    <!-- category image - AR - 1.6 -->
+    <div class="md:grow-0 md:shrink-0 md:self-start relative z-20 mb-7 md:mb-0">
+        <div class="slider relative z-20 flex">
+            {{ taxonomy:categories }}
+                <a href="{{ uri }}" class="slide sm:mr-4 last:mr-0 relative group">
+                    <div class="block bg-gradient-to-r from-secondary to-primary bg-opacity-10 aspect-w-[1440] aspect-h-[900] group-hover:transition-transform group-hover:-translate-y-0.5 duration-300 relative after:absolute after:inset-0 after:bg-black after:bg-opacity-40">
+                            {{ if category_image:src }}
+                                {{ responsive:category_image ratio="1.6" glide:width="560" lazyload="true" }}
+                            {{ /if }}
+                        <div class="flex justify-center items-center px-6">
+                            <p class="text-2xl lg:text-2.5xl font-josefin font-semibold text-white relative z-10"><span style="color: {{ category_color }}">#</span>{{ title }}</p>
+                        </div>
+                    </div>
+                </a>
+            {{ /taxonomy:categories }}
+        </div>
+
+        <!-- arrows -->
+        <div class="slider-navigation hidden justify-between items-center absolute -left-4 -right-4 lg:-right-3.5 top-0 bottom-0 arrows-cont">
+            <button
+                class="icon-arrow z-20 transition-colors flex items-center justify-center rotate-180 bg-primary text-white w-8 h-8 lg:w-10 lg:h-10 rounded-full text-lg lg:text-xl text-center hover:bg-opacity-70 disabled:bg-opacity-70 disabled:text-opacity-70 disabled:hover:bg-secondary disabled:hover:bg-opacity-70 disabled:cursor-not-allowed md:disabled:hidden animate-fadeIn"
+                aria-label="Previous Slide" title="Previous Slide">
+                <span class="icon-arrow-right inline-block"></span>
+            </button>
+
+            <button
+                class="icon-arrow z-20 transition-colors flex items-center justify-center bg-primary text-white w-8 h-8 lg:w-10 lg:h-10 rounded-full  text-lg lg:text-xl text-center hover:bg-opacity-70 disabled:bg-opacity-70 disabled:text-opacity-70 disabled:hover:bg-secondary disabled:hover:bg-opacity-70 disabled:cursor-not-allowed md:disabled:hidden animate-fadeIn"
+                aria-label="Next Slide" title="Next Slide">
+                <span class="icon-arrow-right inline-block"></span>
+            </button>
+        </div>
+    </div>
+
+    {{ once }}
+        {{ push:componentScripts }}
+            <script src="{{ mix src='/js/widget-slider-categories.js' }}" defer></script>
+        {{ /push:componentScripts }}
+    {{ /once }}
+</div>

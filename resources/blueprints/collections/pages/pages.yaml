@@ -1,0 +1,132 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: name
+            field:
+              input_type: text
+              antlers: false
+              display: Name
+              type: text
+              instructions: 'Descriptive unique name'
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+                - 'unique_entry_value:{collection},{id},{site}'
+              localizable: true
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              input_type: text
+              localizable: true
+              listable: true
+              display: Title
+              validate:
+                - required
+              instructions: 'Page title'
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              antlers: false
+              hide_display: false
+          -
+            import: page_content
+  seo:
+    display: SEO
+    sections:
+      -
+        fields:
+          -
+            import: seo
+  custom_html:
+    display: 'Custom HTML'
+    sections:
+      -
+        fields:
+          -
+            handle: what_is_this_for
+            field:
+              display: 'What is this for?'
+              type: section
+              instructions: 'Use this section to insert custom html scripts and tags in the page. <br> Note*: these tags will appear below the page content. <b>Do not use this section to add content which should be added through the page_content.</b>'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
+          -
+            handle: code
+            field:
+              theme: material
+              mode: htmlmixed
+              mode_selectable: false
+              indent_type: tabs
+              indent_size: 4
+              key_map: default
+              line_numbers: true
+              line_wrapping: true
+              display: Code
+              type: code
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              always_save: false
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: meta
+            field:
+              type: section
+              instructions: "This entry's meta data."
+              display: Meta
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate:
+                - required
+              generate: true
+              listable: hidden
+              display: Slug
+          -
+            handle: parent
+            field:
+              type: entries
+              collections:
+                - pages
+              max_items: 1
+              listable: false
+              localizable: true
+          -
+            handle: template
+            field:
+              hide_partials: true
+              display: Template
+              type: template
+              instructions: 'Differentiating the pages by templates in the frontend.'
+              listable: hidden
+              instructions_position: above
+              validate:
+                - required
+          -
+            handle: date
+            field:
+              type: date
+              required: true
+              default: now
+              validate:
+                - required

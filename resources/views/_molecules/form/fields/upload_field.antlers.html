@@ -1,0 +1,45 @@
+<fieldset id="{{ form:handle }}_{{ handle }}"
+    class="form-group mb-5 last:mb-0 w-full" x-data="{ files: null }">
+    <label class="block relative">
+        {{# label #}}
+        <span
+            class="block self-start relative cursor-pointer text-tertiary-dark font-josefin font-extralight uppercase text-lg lg:text-xl peer-disabled:cursor-not-allowed peer-disabled:opacity-25 order-first mb-2.5">
+            {{ display }}
+
+            {{# adding asterisk for required fields #}}
+            {{ if (validate | in_array:required) }}
+            *
+            {{ /if }}
+        </span>
+
+        {{# actual field #}}
+        <span class="block w-full relative bg-white">
+            <input
+                type="file"
+                name="{{ handle }}"
+                id="{{ handle }}"
+                class="opacity-0 appearance-none absolute peer w-0 h-0"
+                @change="files= Object.values($event.target.files)">
+
+            {{# field clone #}}
+            <div
+                class="upload-clone block px-5 py-3.5 min-h-[57.5px] w-full appearance-none text-tertiary-dark border border-tertiary-light rounded-md focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-tertiary-light transition-all text-lg lg:text-xl disabled:opacity-25 focus:outline-none disabled:cursor-not-allowed peer cursor-pointer relative z-20">
+                <span
+                    class="leading-snug whitespace-nowrap text-ellipsis block overflow-hidden text-tertiary-dark font-josefin font-extralight">
+                    <span class="opacity-50">{{ instructions }}</span>
+                </span>
+            </div>
+        </span>
+        <button type="button"
+            class="file-placeholder text-lg text-tertiary-dark w-full text-left relative pl-5 mt-1 hover:text-error transition-colors hidden font-josefin font-extralight"
+            :class="{'!block': files}" @click.prevent="files= null">
+            <span class="absolute left-0 leading-none top-[5px]">&#10005;</span>
+            <span
+                x-text="files && files.map(file=> file.name).join(', ')"></span>
+        </button>
+    </label>
+
+    {{# error message #}}
+    <p
+        class="error-feedback mt-1 text-xs text-error font-bold animate-fadeIn w-full empty:hidden"></p>
+</fieldset>

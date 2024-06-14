@@ -1,0 +1,25 @@
+title: 'Widget Slider Categories'
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Title
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      localizable: true
+      replicator_preview: true
+  -
+    handle: categories_are_imported_from_taxonomies
+    field:
+      type: section
+      display: 'Categories are imported from taxonomies'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false

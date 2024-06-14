@@ -1,0 +1,235 @@
+tabs:
+  error_messages:
+    display: 'Error messages'
+    sections:
+      -
+        fields:
+          -
+            handle: 404_error
+            field:
+              type: section
+              listable: hidden
+              display: '404 error'
+          -
+            import: error_message
+            prefix: error_page_
+  contact_info:
+    display: 'Contact Info'
+    sections:
+      -
+        fields:
+          -
+            handle: address
+            field:
+              antlers: false
+              type: textarea
+              display: Address
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              localizable: true
+          -
+            handle: phone
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Phone
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              localizable: true
+          -
+            handle: email
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: Email
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              hide_display: false
+              localizable: true
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: sidebar_recent_posts_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Sidebar Recent Posts Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: sidebar_categories_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Sidebar Categories Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: sidebar_social_links_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Sidebar Social Links Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: sidebar_advertising_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Sidebar Advertising Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: advertising_image
+            field:
+              use_breakpoints: false
+              allow_ratio: true
+              allow_fit: true
+              breakpoints:
+                - sm
+                - md
+                - lg
+                - xl
+                - 2xl
+              restrict: false
+              allow_uploads: true
+              type: responsive
+              display: 'Advertising Image'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+          -
+            handle: advertising_link
+            field:
+              type: link
+              display: 'Advertising Link'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  footer:
+    display: Footer
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: footer_first_col_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Footer First Col Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: footer_second_col_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Footer Second Col Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: footer_third_col_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Footer Third Col Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: footer_fourth_col_title
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Footer Fourth Col Title'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+              validate:
+                - required
+          -
+            handle: footer_about_section_description
+            field:
+              input_type: text
+              antlers: false
+              type: text
+              display: 'Footer About Section Description'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false
+  search_page:
+    display: 'Search Page'
+    sections:
+      -
+        display: 'New Section'
+        fields:
+          -
+            handle: search_page_popular_categories
+            field:
+              mode: default
+              create: false
+              taxonomies:
+                - categories
+              type: terms
+              display: 'Search Page Popular Categories'
+              instructions: 'You can select popular categories to display on Search Page'
+              listable: hidden
+              instructions_position: above
+              visibility: visible
+              replicator_preview: true
+              hide_display: false

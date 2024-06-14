@@ -1,0 +1,47 @@
+<div class="pagination flex flex-wrap items-center justify-center {{ customClass }}">
+    <!-- control-link prev -->
+    {{ if prev_page }}
+        <a aria-label="prev-page" href="{{ prev_page }}" class="control-link flex items-center justify-center order-2 text-white bg-primary rounded-full transition-colors text-base w-9 h-9 hover:opacity-60 mr-6 sm:mr-0">
+            <span class="icon-arrow-left"></span>
+        </a>
+    {{#
+        when disabled
+        add opacity-20 cursor-not-allowed
+        remove hover:opacity-60
+    #}}
+    {{ else }}
+        <a aria-label="prev-page" class="control-link flex items-center justify-center order-2 text-base transition-colors w-9 h-9 text-white bg-primary rounded-full opacity-40 cursor-not-allowed mr-6 sm:mr-0">
+            <span class="icon-arrow-left"></span>
+        </a>
+    {{ /if }}
+
+    {{ links:segments }}
+        <ul class="flex items-center justify-center order-1 px-5 mb-5 text-base font-medium basis-full sm:basis-auto sm:order-2 sm:mb-0">
+            {{ first }}
+                <li class="pagination-item group">
+                    {{ if page == current_page }}
+                        <span class="transition-colors w-8 h-8 flex items-center justify-center bg-primary text-white">{{ page }}</span>
+                    {{ else }}
+                        <a href="{{ url }}" class="transition-colors text-black hover:text-white hover:bg-primary hover:bg-opacity-50 w-8 h-8 flex items-center justify-center">{{ page }}</a>
+                    {{ /if }}
+                </li>
+            {{ /first }}
+        </ul>
+    {{ /links:segments }}
+
+    <!-- control-link next -->
+    {{ if next_page }}
+        <a aria-label="next-page" href="{{ next_page }}" class="control-link flex items-center justify-center order-3 text-white bg-primary rounded-full transition-colors text-base w-9 h-9 hover:opacity-60">
+            <span class="icon-arrow-right"></span>
+        </a>
+    {{#
+        when disabled
+        add opacity-20 cursor-not-allowed
+        remove hover:opacity-60
+    #}}
+    {{ else }}
+        <a aria-label="next-page" class="control-link flex items-center justify-center order-3 text-base transition-colors w-9 h-9 text-white bg-primary rounded-full opacity-40 cursor-not-allowed">
+            <span class="icon-arrow-right"></span>
+        </a>
+    {{ /if }}
+</div>

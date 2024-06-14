@@ -1,0 +1,51 @@
+title: Form
+fields:
+  -
+    handle: scroll_to_id
+    field:
+      input_type: text
+      placeholder: contact-form
+      antlers: false
+      type: text
+      display: 'Scroll To ID'
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      localizable: true
+  -
+    handle: pre_title
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: 'Pre Title'
+      icon: text
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      hide_display: false
+      localizable: true
+  -
+    handle: title
+    field:
+      input_type: text
+      type: text
+      localizable: true
+      listable: hidden
+      display: Title
+      instructions: 'The title you want to display above the form.'
+      validate:
+        - required
+  -
+    handle: form
+    field:
+      max_items: 1
+      type: form
+      listable: hidden
+      instructions: 'Which form should be displayed.'
+      display: Form
+      validate:
+        - required
+      localizable: true

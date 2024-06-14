@@ -1,0 +1,56 @@
+title: 'Widget Latest News'
+fields:
+  -
+    handle: title
+    field:
+      input_type: text
+      antlers: false
+      type: text
+      display: Title
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: popular_topic
+    field:
+      max_items: 6
+      mode: default
+      create: true
+      collections:
+        - posts
+      type: entries
+      display: 'Popular Topic'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      validate:
+        - required
+  -
+    import: button
+  -
+    handle: sidebar_section
+    field:
+      type: section
+      display: 'Sidebar Section'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+  -
+    handle: show_sidebar
+    field:
+      default: false
+      type: toggle
+      display: 'Show Sidebar'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      validate:
+        - required

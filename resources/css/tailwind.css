@@ -1,0 +1,151 @@
+@import "tailwindcss/base";
+
+@import "site";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@layer base {
+  @font-face {
+    font-family: "icomoon";
+    src: url("/fonts/icomoon.eot?u2fbwj");
+    src: url("/fonts/icomoon.eot?u2fbwj#iefix") format("embedded-opentype"), url("/fonts/icomoon.ttf?u2fbwj") format("truetype"), url("/fonts/icomoon.woff?u2fbwj") format("woff"), url("/fonts/icomoon.svg?u2fbwj#icomoon") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "icomoon" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .icon-pinterest:before {
+    content: "\e903";
+  }
+  .icon-mail:before {
+    content: "\e902";
+  }
+  .icon-tiktok:before {
+    content: "\e900";
+  }
+  .icon-x:before {
+    content: "\e901";
+  }
+  .icon-location:before {
+    content: "\e947";
+  }
+  .icon-search:before {
+    content: "\e986";
+  }
+  .icon-cross:before {
+    content: "\ea0f";
+  }
+  .icon-checkmark:before {
+    content: "\ea10";
+  }
+  .icon-arrow-right:before {
+    content: "\ea3c";
+  }
+  .icon-arrow-left:before {
+    content: "\ea40";
+  }
+  .icon-google-plus:before {
+    content: "\ea8d";
+  }
+  .icon-facebook:before {
+    content: "\ea90";
+  }
+  .icon-instagram:before {
+    content: "\ea92";
+  }
+  .icon-whatsapp:before {
+    content: "\ea93";
+  }
+  .icon-rss:before {
+    content: "\ea9b";
+  }
+  .icon-youtube:before {
+    content: "\ea9d";
+  }
+  .icon-linkedin:before {
+    content: "\eaca";
+  }
+
+  ::selection {
+    @apply bg-black bg-opacity-20;
+  }
+
+  iframe {
+    @apply max-w-full;
+  }
+
+  html,
+  body,
+  #root {
+    @apply scroll-smooth overscroll-none;
+  }
+
+  body {
+    @apply pt-[79.5px] lg:!pt-[103.5px] bg-[#F9F9FE];
+  }
+}
+
+@layer components {
+  .code {
+    @apply bg-black text-white px-4 py-3 rounded-md mt-10 overflow-x-scroll;
+  }
+
+  #search-page,
+  .posts-overview,
+  .widget-latest-news,
+  .category-detail,
+  .blog-detail {
+    .news-item,
+    .recent-posts-item {
+      picture {
+        @apply block w-full;
+      }
+
+      img {
+        @apply block w-full transition-transform duration-300;
+      }
+
+      &:hover img {
+        @apply scale-105;
+      }
+    }
+  }
+
+  #top + .category-detail {
+    @apply pt-10;
+  }
+
+  .banner + .widget-slider-categories {
+    @apply pt-0;
+  }
+
+  .btn {
+    @apply text-center select-none transition-all flex w-full xs:w-auto xs:inline-flex items-center justify-center font-semibold font-josefin text-xl px-5 py-2.5 disabled:cursor-not-allowed disabled:opacity-50 focus:outline-1 focus:outline focus:outline-offset-2 relative;
+
+    &.state-primary {
+      @apply bg-primary text-white hover:bg-opacity-80 focus:outline-primary disabled:hover:bg-primary disabled:hover:text-white;
+    }
+
+    &.state-secondary {
+      @apply bg-secondary text-white hover:bg-opacity-80 focus:outline-primary disabled:hover:bg-secondary disabled:hover:text-white;
+    }
+  }
+}

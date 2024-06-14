@@ -1,0 +1,82 @@
+title: 'Widget Ads'
+fields:
+  -
+    handle: left_image
+    field:
+      use_breakpoints: false
+      allow_ratio: true
+      allow_fit: true
+      container: assets
+      restrict: false
+      allow_uploads: true
+      display: 'Left Image'
+      type: responsive
+      listable: hidden
+      instructions: '<p style="background: #f2f0a1; color: black; padding: 5px 10px; font-size: 15px; font-weight: bold;">  Use 1.6 ratio to get the best experience. If you change it, a frontend work may be needed. </p><p>Preferred image size is <span style="font-weight: bold;">580x350</span></p>'
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      validate:
+        - required
+      folder: widgets
+      default:
+        ratio: '1.6'
+        'glide:fit': crop_focal
+      breakpoints:
+        - sm
+        - md
+        - lg
+        - xl
+        - 2xl
+  -
+    handle: left_image_link
+    field:
+      type: link
+      display: 'Left Image Link'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      validate:
+        - required
+  -
+    handle: right_image
+    field:
+      use_breakpoints: false
+      allow_ratio: true
+      allow_fit: true
+      container: assets
+      restrict: false
+      allow_uploads: true
+      display: 'Right Image'
+      type: responsive
+      listable: hidden
+      instructions: '<p style="background: #f2f0a1; color: black; padding: 5px 10px; font-size: 15px; font-weight: bold;">  Use 1.6 ratio to get the best experience. If you change it, a frontend work may be needed. </p><p>Preferred image size is <span style="font-weight: bold;">580x350</span></p>'
+      instructions_position: above
+      visibility: visible
+      always_save: false
+      validate:
+        - required
+      folder: widgets
+      default:
+        ratio: '1.6'
+        'glide:fit': crop_focal
+      breakpoints:
+        - sm
+        - md
+        - lg
+        - xl
+        - 2xl
+  -
+    handle: right_image_link
+    field:
+      type: link
+      display: 'Right Image Link'
+      listable: hidden
+      instructions_position: above
+      visibility: visible
+      replicator_preview: true
+      hide_display: false
+      validate:
+        - required

@@ -1,0 +1,63 @@
+<!-- social share -->
+<div
+    class="animate-fadeInUp flex justify-center items-center flex-wrap mt-10 -mr-4 -mb-2 {{ customClass }}">
+    <p class="mr-4 mb-2 font-josefin text-lg font-semibold">Share Article:</p>
+
+    <div class="flex items-center flex-wrap">
+        <a
+            rel="nofollow noreferrer"
+            target="_blank"
+            data-event-category="social media links"
+            data-event-action="clicked"
+            data-event-label="facebook share button"
+            class="icon-facebook mr-4 mb-2 text-2xl flex items-center justify-center text-white bg-[#175beb] rounded-full w-10 h-10 relative hover:transition-transform hover:-translate-y-0.5 duration-300 overflow-hidden"
+            href="https://www.facebook.com/sharer/sharer.php?u={{ current_full_url }}?utm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dwebsite-share-buttons"
+            aria-label="Deel via Facebook">
+        </a>
+
+        <a
+            rel="nofollow noreferrer"
+            target="_blank"
+            data-event-category="social media links"
+            data-event-action="clicked"
+            data-event-label="whatsapp share button"
+            class="icon-whatsapp mr-4 mb-2 text-xl flex items-center justify-center text-white bg-[#1FB381] rounded-full w-10 h-10 relative hover:transition-transform hover:-translate-y-0.5 duration-300 overflow-hidden"
+            href="whatsapp://send?text={{ current_full_url }}?utm_source%3Dwhatsapp%26utm_medium%3Dsocial%26utm_campaign%3Dwebsite-share-buttons"
+            aria-label="Deel via WhatsApp">
+        </a>
+
+        <a
+            rel="nofollow noreferrer"
+            target="_blank"
+            data-event-category="social media links"
+            data-event-action="clicked"
+            data-event-label="twitter share button"
+            class="icon-x mr-4 mb-2 text-xl flex items-center justify-center text-white bg-black rounded-full w-10 h-10 relative hover:transition-transform hover:-translate-y-0.5 duration-300 overflow-hidden"
+            href="https://twitter.com/intent/tweet?url={{ current_full_url }}?utm_source%3Dtwitter%26utm_medium%3Dsocial%26utm_campaign%3Dwebsite-share-buttons&amp;text={{{ title }}}"
+            aria-label="Deel via Twitter">
+        </a>
+
+        <a
+            rel="nofollow noreferrer"
+            target="_blank"
+            data-event-category="social media links"
+            data-event-action="clicked"
+            data-event-label="linkedin share button"
+            class="icon-linkedin mr-4 mb-2 text-xl flex items-center justify-center text-white bg-[#0077b5] rounded-full w-10 h-10 relative hover:transition-transform hover:-translate-y-0.5 duration-300 overflow-hidden"
+            href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{ current_full_url }}?utm_source%3Dlinkedin%26utm_medium%3Dsocial%26utm_campaign%3Dwebsite-share-buttons"
+            aria-label="Deel via LinkedIn">
+        </a>
+
+        <a
+            rel="nofollow noreferrer"
+            target="_blank"
+            data-event-category="social media links"
+            data-event-action="clicked"
+            data-event-label="mail share button"
+            class="icon-mail mr-4 mb-2 text-xl flex items-center justify-center text-white bg-primary rounded-full w-10 h-10 relative hover:transition-transform hover:-translate-y-0.5 duration-300 overflow-hidden"
+            href="mailto:?subject={{ title }}&body={{ title }} {{ current_full_url }}"
+            aria-label="Deel op Mail">
+        </a>
+    </div>
+</div>
+<!-- /social share -->

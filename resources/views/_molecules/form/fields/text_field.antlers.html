@@ -1,0 +1,54 @@
+<fieldset id="{{ form:handle }}_{{ handle }}"
+    class="form-group flex flex-col w-full mb-5 last:mb-0">
+    {{# label #}}
+    <label
+        class="block self-start relative cursor-pointer text-tertiary-dark font-josefin font-extralight uppercase text-lg lg:text-xl peer-disabled:cursor-not-allowed peer-disabled:opacity-25 order-first mb-2.5"
+        for="{{ handle }}">
+        {{ display }}
+
+        {{# adding asterisk for required fields #}}
+        {{ if (validate | in_array:required) }}
+        *
+        {{ /if }}
+    </label>
+
+    {{# prepend text #}}
+    {{ if prepend }}
+    <span
+        class="block w-full mb-1 text-sm font-josefin font-extralight last:mb-0">{{
+        prepend }}</span>
+    {{ /if }}
+
+    {{# instructions above #}}
+    {{ if instructions && instructions_position === "above" }}
+    <span
+        class="block w-full mb-1 text-sm font-josefin font-extralight last:mb-0">{{
+        instructions }}</span>
+    {{ /if }}
+
+    {{# actual field #}}
+    <input
+        type="{{ input_type }}"
+        name="{{ handle }}"
+        id="{{ handle }}"
+        placeholder="{{ placeholder }}"
+        maxlength="{{ character_limit }}"
+        value="{{ default }}"
+        class="block px-5 py-3.5 w-full appearance-none text-tertiary-dark bg-white border border-tertiary-light rounded-md focus:outline focus:outline-1 focus:outline-offset-2 focus:outline-tertiary-light transition-all text-lg lg:text-xl disabled:opacity-25 focus:outline-none disabled:cursor-not-allowed placeholder:opacity-50 font-josefin font-extralight peer">
+
+    {{# append text #}}
+    {{ if append }}
+    <span class="block w-full mt-1 text-sm font-josefin font-extralight">{{
+        append }}</span>
+    {{ /if }}
+
+    {{# instructions below #}}
+    {{ if instructions && instructions_position === "below" }}
+    <span class="block w-full mt-1 text-sm font-josefin font-extralight">{{
+        instructions }}</span>
+    {{ /if }}
+
+    {{# error message #}}
+    <p
+        class="error-feedback mt-1 text-xs text-error font-bold animate-fadeIn w-full empty:hidden"></p>
+</fieldset>

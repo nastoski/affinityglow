@@ -1,0 +1,17 @@
+<div class="flex flex-wrap w-full font-bold text-2xl 2xl:text-2.5xl -ml-2.5 max-w-[290px]">
+    {{ social_media:social_media }}
+        <a href="{{ prefix }}{{ url }}" class="inline-block w-[22%] h-[72px] text-2xl text-center font-semibold text-white relative mb-[3%] ml-[3%] align-top before:hidden after:absolute after:content-[''] after:border-[3px] after:inset-0 after:transition-all group {{ if type === 'facebook' }} after:!border-[#175beb] {{ elseif type === 'instagram' }} after:!border-[#EF00A2] {{ elseif type === 'twitter' }} after:!border-[#14171A] {{ elseif type === 'tiktok' }} after:!border-[#69c9d0] {{ elseif type === 'pinterest' }} after:!border-[#E60023] {{ /if }}" rel="noopener noreferer" target="_blank" title="{{ type }}" aria-label="{{ type }}">
+            {{ if type === 'facebook' }}
+                <span class="icon-facebook group-hover:-translate-x-[5px] group-hover:-translate-y-[5px] leading-[72px] w-full bg-[#175beb] absolute left-0 top-0 z-30 transition-all duration-300 after:opacity-100 after:content-[''] after:border-white after:border-[1px] after:absolute after:inset-[2px] after:transition-all after:z-20 group-hover:after:opacity-0"></span>
+            {{ elseif type === 'instagram' }}
+                <span class="icon-instagram group-hover:-translate-x-[5px] group-hover:-translate-y-[5px] leading-[72px] w-full bg-[#EF00A2] absolute left-0 top-0 z-30 transition-all duration-300 after:opacity-100 after:content-[''] after:border-white after:border-[1px] after:absolute after:inset-[2px] after:transition-all after:z-20 group-hover:after:opacity-0"></span>
+            {{ elseif type === 'twitter' }}
+                <span class="icon-x group-hover:-translate-x-[5px] group-hover:-translate-y-[5px] leading-[72px] w-full bg-[#14171A] absolute left-0 top-0 z-30 transition-all duration-300 after:opacity-100 after:content-[''] after:border-white after:border-[1px] after:absolute after:inset-[2px] after:transition-all after:z-20 group-hover:after:opacity-0"></span>
+            {{ elseif type === 'tiktok' }}
+                <span class="icon-tiktok group-hover:-translate-x-[5px] group-hover:-translate-y-[5px] leading-[72px] w-full bg-[#69c9d0] absolute left-0 top-0 z-30 transition-all duration-300 after:opacity-100 after:content-[''] after:border-white after:border-[1px] after:absolute after:inset-[2px] after:transition-all after:z-20 group-hover:after:opacity-0"></span>
+            {{ elseif type === 'pinterest' }}
+                <span class="icon-pinterest group-hover:-translate-x-[5px] group-hover:-translate-y-[5px] leading-[72px] w-full bg-[#E60023] absolute left-0 top-0 z-30 transition-all duration-300 after:opacity-100 after:content-[''] after:border-white after:border-[1px] after:absolute after:inset-[2px] after:transition-all after:z-20 group-hover:after:opacity-0"></span>
+            {{ /if }}
+        </a>
+    {{ /social_media:social_media }}
+</div>

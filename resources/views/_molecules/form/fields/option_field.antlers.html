@@ -1,0 +1,28 @@
+<label
+    for="{{ name }}_{{ key | replace(' ', '_')  }}"
+    class="relative flex items-center mb-2.5 last:mb-0 {{ inline ? 'sm:mb-0 sm:mr-8 sm:last:mr-0 sm:inline-flex sm:flex-grow-0 sm:flex-shrink-0' : ''}}">
+    <input
+        type="{{ type }}"
+        id="{{ name }}_{{ key | replace(' ', '_')  }}"
+        name="{{ name }}"
+        class="absolute opacity-0 appearance-none peer"
+        value="{{ value }}">
+
+    <div
+        class="flex items-center cursor-pointer justify-center bg-white border border-tertiary-light transition-colors w-4 h-4 peer-focus:ring-1 peer-focus:ring-offset-2 peer-focus:ring-tertiary-light peer-disabled:cursor-not-allowed peer-disabled:opacity-25 peer-checked:border-tertiary-dark mr-3 {{ type === "radio"
+        ? " rounded-full" : " relative"}}">
+
+        {{ if type === "radio" }}
+        <span
+            class="w-2 h-2 rounded-full opacity-0 transition-all ease-out bg-tertiary-dark"></span>
+        {{ else }}
+        <span
+            class="w-4 h-4 opacity-0 transition-all ease-out bg-tertiary-dark"></span>
+        {{ /if }}
+    </div>
+
+    <span
+        class="peer-disabled:opacity-25 cursor-pointer peer-disabled:cursor-not-allowed text-tertiary-dark font-josefin font-extralight uppercase text-lg lg:text-xl">
+        {{ value }}
+    </span>
+</label>

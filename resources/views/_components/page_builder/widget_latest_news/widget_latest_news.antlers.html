@@ -1,0 +1,139 @@
+<div class="widget-latest-news px-4 lg:px-8 mx-auto max-w-8xl pb-10 lg:pb-20 xl:pb-24 lg:flex relative">
+    <div class="lg:basis-2/3 lg:grow lg:shrink-0 mb-10 lg:mb-0 last:mb-0 lg:mr-10 xl:mr-14 last:mr-0">
+        {{ if title }}
+            <h2 class="text-2xl lg:text-2.5xl font-josefin font-semibold text-secondary mb-5 last:mb-0">
+                {{ title }}
+            </h2>
+        {{ /if }}
+
+        <!-- cards-grid -->
+        <div class="sm:flex sm:flex-wrap sm:-mt-8 sm:-mr-4 lg:-mt-9 lg:-mr-5">
+            {{ popular_topic }}
+                <div class="news-item mb-6 last:mb-0 sm:mb-0 sm:mt-8 lg:mt-9 sm:grow-0 sm:shrink sm:basis-1/2">
+                    <a href="{{ uri }}" class="flex flex-col h-full sm:mr-4 lg:mr-5 group shadow-odd">
+                        <div class="relative">
+                            <div class="bg-secondary-light overflow-hidden relative bg-opacity-10 aspect-w-[1440] aspect-h-[900]">
+                                {{ responsive:post_image ratio="1.6" glide:width="575" lazyload="true" }}
+                            </div>
+
+                            <!-- category -->
+                            <div class="absolute z-20 left-0 right-0 bottom-0">
+                                <span class="text-white font-bold font-josefin uppercase text-sm leading-[2.4] bg-primary py-2.5 px-3">
+                                    {{ categories }} {{ title }} {{ /categories }}</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-white px-5 py-5 grow flex flex-col">
+                            <!-- title -->
+                            {{ if title }}
+                                <h2 class="text-xl lg:text-2xl font-josefin font-semibold text-secondary mb-3 last:mb-0 group-hover:text-tertiary transition-colors duration-300">
+                                    {{ title }}
+                                </h2>
+                            {{ /if }}
+
+                            {{ if excerpt }}
+                                <!-- excerpt -->
+                                <p class="font-source mb-3 text-secondary-light">{{ excerpt }}</p>
+                            {{ /if }}
+
+                            <div class="font-source text-secondary-light mt-auto">
+                                <time class="mr-3" datetime="{{ date format="M d, Y" }}">{{ date format="M d, Y" }}</time>
+                                {{ if reading_time }}
+                                    <div class="whitespace-nowrap inline-block lowercase before:content-[''] before:inline-block before:w-[15px] before:h-[2px] before:bg-primary before:align-middle before:mr-3">
+                                        <span class="">{{ reading_time }}</span>
+                                    </div>
+                                {{ /if }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {{ /popular_topic }}
+
+        </div>
+
+        {{ if label }}
+            <div class="mt-6 sm:mt-8 lg:mt-9 first:mt-0 ">
+                {{ partial src="_atoms/button/button" }}
+            </div>
+        {{ /if }}
+    </div>
+
+    {{ if show_sidebar }}
+        {{ configuration }}
+            <div class="lg:grow-0 lg:shrink lg:basis-1/3">
+                <div class="mb-10 last:mb-0">
+                    <div class="flex items-center mb-5 last:mb-0">
+                        <h2 class="font-josefin text-secondary font-semibold text-2xl lg:text-2.5xl leading-tight">{{ sidebar_recent_posts_title || "Recent Posts" }}</h2>
+                        <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                    </div>
+
+                    {{ collection from="posts" limit="4" as="posts" sort="date:desc" }}
+                        <!-- grid -->
+                        <div class="sm:flex sm:flex-wrap -mb-5 sm:-mr-4 lg:-mr-5">
+                            {{ posts }}
+                                <div class="recent-posts-item mb-5 sm:grow-0 sm:shrink sm:basis-1/2 lg:basis-full">
+                                    <a href="{{ uri }}" class="flex sm:mr-4 lg:mr-5 group">
+                                        <div class="grow-0 shrink-0 basis-[100px] xxs:basis-[160px] mr-4 lg:mr-5 last:mr-0">
+                                            <div class="bg-secondary-light overflow-hidden bg-opacity-10 aspect-w-[1440] aspect-h-[900]">
+                                                {{ responsive:post_image ratio="1.6" lazyload="true" }}
+                                            </div>
+                                        </div>
+
+                                        <div class="flex flex-col">
+                                            <h2 class="text-sm lg:text-base font-josefin font-bold text-secondary mb-1.5 last:mb-0 group-hover:text-tertiary transition-colors duration-300 hidden lg:block">{{ title | truncate(60, '..') }}</h2>
+
+                                            <h2 class="text-sm lg:text-lg font-josefin font-bold text-secondary mb-1.5 last:mb-0 group-hover:text-tertiary transition-colors duration-300 block lg:hidden">{{ title }}</h2>
+
+                                            <time class="font-source text-secondary-light text-sm mt-auto" datetime="{{ date format="M d, Y" }}">{{ date format="M d, Y" }}</time>
+                                        </div>
+                                    </a>
+                                </div>
+                            {{ /posts }}
+                        </div>
+                    {{ /collection }}
+                </div>
+
+                <div class="mb-5 last:mb-0">
+                    <div class="flex items-center mb-5 last:mb-0">
+                        <h2 class="font-josefin text-secondary font-semibold text-2xl lg:text-2.5xl leading-tight">{{ sidebar_categories_title || "Categories" }}</h2>
+                        <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                    </div>
+
+                    <div class="inline-block">
+                        {{ taxonomy:categories }}
+                            <a href="{{ uri }}" class="inline-block bg-white px-3 py-1 shadow-alt mb-3 last:mb-0 font-josefin text-secondary text-sm hover:transition-transform hover:-translate-y-0.5 duration-300">
+                                <span style="color: {{ category_color }}">#</span>
+                                {{ title }}
+                            </a>
+                        {{ /taxonomy:categories }}
+                    </div>
+                </div>
+
+                <div class="mb-5 last:mb-0">
+                    <div class="flex items-center mb-5 last:mb-0">
+                        <h2 class="font-josefin text-secondary font-semibold text-2xl lg:text-2.5xl leading-tight">{{ sidebar_social_links_title || "Social" }}</h2>
+                        <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                    </div>
+
+                    {{ partial src="_atoms/social_follow/social_follow_sidebar" }}
+
+                </div>
+
+                {{ if advertising_image }}
+                    <div class="mb-5 last:mb-0">
+                        <div class="flex items-center mb-5 last:mb-0">
+                            <h2 class="font-josefin text-secondary font-semibold text-2xl lg:text-2.5xl leading-tight">{{ sidebar_advertising_title || "Advertising" }}</h2>
+                            <span class="h-0.5 bg-primary content-[''] flex-1 ml-4"></span>
+                        </div>
+
+                        <a href="{{ advertising_link }}" class="block xs:max-w-[370px]" target="_blank" rel="noopener noreferrer">
+                            <div class="bg-secondary-light bg-opacity-10 aspect-w-[1440] aspect-h-[900]">
+                                {{ responsive:advertising_image ratio="1.6" }}
+                            </div>
+                        </a>
+                    </div>
+                {{ /if }}
+            </div>
+        {{ /configuration }}
+    {{ /if }}
+</div>

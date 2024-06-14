@@ -1,0 +1,31 @@
+<!-- widget-form -->
+<div
+    class="widget-form bg-white pb-10 lg:pb-20 xl:pb-24 relative z-10"
+    {{ if scroll_to_id }}id="{{ scroll_to_id }}" {{ /if }}>
+    <div class="px-8 mx-auto max-w-1.5xl">
+        {{ if pre_title }}
+        <!-- pre-title -->
+        <p
+            class="font-josefin font-extralight uppercase text-2.5xl lg:text-3xl pb-1 !leading-snug inline-block border-b border-b-primary text-primary mb-3 last:mb-0">{{
+            pre_title }}</p>
+        {{ /if }}
+
+        <!-- title -->
+        <h2
+            class="text-secondary font-source mb-10 last:mb-0 text-6xl lg:text-7xl leading-none">{{
+            title }}</h2>
+
+        {{ nocache }}
+        {{ form:create formset="{{ form:handle }}" class="ajax-form"
+        data-handle="{{ form:handle }}" }}
+        {{ partial src="_molecules/form/form" }}
+        {{ /form:create }}
+        {{ /nocache }}
+        {{ once }}
+        {{ push:scripts }}
+        <script src="{{ mix src='/js/ajax-form.js' }}" defer></script>
+        {{ /push:scripts }}
+        {{ /once }}
+    </div>
+</div>
+<!-- /widget-form -->

@@ -1,0 +1,11 @@
+{{ page_content }}
+    {{ if text }}
+            {{# if there is content in the bard - show the default prose styles #}}
+            <div class="px-4 lg:px-8 mx-auto max-w-5.5xl py-10 lg:py-20 xl:py-24">
+                {{ partial src="_atoms/prose/prose" }}
+            </div>
+            {{# else show the widgets #}}
+        {{ else }}
+            {{ partial src="_components/{type}" }}
+    {{ /if }}
+{{ /page_content }}
