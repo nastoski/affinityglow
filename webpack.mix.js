@@ -15,7 +15,7 @@ mix
   // global scripts below
   .js("resources/js/site.js", "public/js")
   // page scripts below (add them to stacks:scripts)
-  .js("resources/js/ajax-form.js", "public/js")
+  // .js("resources/js/ajax-form.js", "public/js")
   // component scripts below (add them to stacks:componentScripts)
   .js("resources/js/components/widget-slider-categories", "public/js");
 
