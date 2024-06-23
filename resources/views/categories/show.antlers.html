@@ -17,10 +17,12 @@
                 </div>
             </div>
 
-            <!-- category description -->
-            <div class="prose lg:prose-lg mb-10 sm:mb-0 mt-5 lg:mt-10">
-                {{ content }}
-            </div>
+            {{ if content }}
+                <!-- category description -->
+                <div class="prose lg:prose-lg mb-10 sm:mb-0 mt-5 lg:mt-10">
+                    {{ content }}
+                </div>
+            {{ /if }}
 
             <!-- grid -->
             {{ entries as="posts" limit="6" paginate="true" sort="date:desc" }}
@@ -88,6 +90,13 @@
                     </div>
                 </div>
             </div>
+
+            {{ if content }}
+                <!-- category description -->
+                <div class="prose lg:prose-lg mb-10 sm:mb-0 mt-5 lg:mt-10">
+                    {{ content }}
+                </div>
+            {{ /if }}
         
         <h2 class="text-2xl lg:text-2.5xl font-josefin font-semibold text-secondary text-center mt-10 lg:mt-20 xl:mt-24">There are no posts yet for this category!</h2>
     </div>
